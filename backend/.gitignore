@@ -1,7 +1,17 @@
-# Common ignore
-node_modules
-.env
-dist
-.vscode
+# Dependencies
+node_modules/
 
-src/uploads/
+# Environment variables (IMPORTANT)
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# Database files
+*.sqlite
+*.db
+
+# OS files
+.DS_Store
