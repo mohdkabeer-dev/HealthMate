@@ -34,7 +34,7 @@ app.use('/report', reportRouter);
 app.use('/vitals', vitalsRouter);
 
 app.get('/', (req, res) => {
-  res.send('Backend is running')
+  res.send('HealthMate API is running successfully !!')
 })
 
 app.get('/about', (req, res) => {
