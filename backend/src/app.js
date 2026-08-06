@@ -1,5 +1,4 @@
 const express = require('express');
-require('dotenv').config();
 const { connectDB } = require("./config/database")
 const { profileRouter } = require('./router/profile');
 const { authRouter } = require('./router/auth');
@@ -15,19 +14,10 @@ app.use(cookieParser());
 
 require('dotenv').config();
 
-const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:3000";
-
-app.use(cors({
-  origin: CLIENT_URL,
-  credentials: true,
-}));
-
-const cors = require("cors");
-
 app.use(cors({
   origin: [
-    "https://health-mate-git-main-mohdkabeer-devs-projects.vercel.app",
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "https://health-mate-assist.vercel.app"
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
