@@ -22,10 +22,16 @@ app.use(cors({
   credentials: true,
 }));
 
+const cors = require("cors");
 
 app.use(cors({
-  origin: "http://localhost:3000", // your frontend URL
-  credentials: true
+  origin: [
+    "https://health-mate-git-main-mohdkabeer-devs-projects.vercel.app",
+    "http://localhost:3000"
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use('/auth', authRouter);
