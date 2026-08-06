@@ -1,27 +1,17 @@
 const mongoose = require("mongoose");
 
-let isConnected = false; // Track connection status
-
 const connectDB = async () => {
-  if (isConnected) {
-    console.log("✅ MongoDB: Reusing existing connection");
-    return;
-  }
-
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    }); 
+    if (!process.env.MONGO_URI) {
+      throw new Error("MONGO_URI is missing in .env");
+    }
 
-    isConnected = conn.connections[0].readyState === 1;
-    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error("❌ MongoDB Connection Error:", error.message);
-    process.exit(1);
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("✅ MongoDB Connected");
+  } catch (err) {
+    console.error("❌ MongoDB Connection Error:", err.message);
+    process.exit(1); // stop server if DB fails
   }
 };
 
-module.exports = {
-    connectDB
-};
+module.exports = { connectDB };

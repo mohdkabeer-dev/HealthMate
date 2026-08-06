@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+
 export default function Home() {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
@@ -33,12 +34,14 @@ export default function Home() {
     setLoading(true);
     try {
       const endpoint = isLogin ? `${API_URL}/auth/login` : `${API_URL}/auth/signup`;
+
+      // const endpoint = "http://localhost:5000/auth/signup";
       const body = isLogin ? { email, password } : { firstname, lastname, email, password };
 
       const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
+        credentials: "include", 
         body: JSON.stringify(body),
       });
 
@@ -70,31 +73,32 @@ export default function Home() {
         <div className="hidden md:block space-y-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                <Heart className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <h1 className="text-4xl font-bold text-foreground">HealthMate</h1>
+              <h1 className="text-4xl font-bold text-foreground leading-tight">
+                Turn Medical Reports into Clear, Actionable Insights
+              </h1>
             </div>
-            <p className="text-lg text-muted-foreground">Sehat ka Smart Dost</p>
+            <p className="text-lg text-muted-foreground">
+              Upload your reports and get instant, easy-to-understand health insights powered by AI.
+            </p>
           </div>
 
           <div className="space-y-6">
             <div className="flex gap-4">
-              <FileText className="w-6 h-6 text-accent shrink-0 mt-1" />
+              <FileText className="w-8 h-8 text-accent shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold mb-1">Upload Reports</h3>
                 <p className="text-sm text-muted-foreground">Store your medical reports safely in one place.</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <Heart className="w-6 h-6 text-accent shrink-0 mt-1" />
+              <Heart className="w-8 h-8 text-accent shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold mb-1">AI-Powered Analysis</h3>
                 <p className="text-sm text-muted-foreground">Get instant summaries in English & Roman Urdu.</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <TrendingUp className="w-6 h-6 text-accent shrink-0 mt-1" />
+              <TrendingUp className="w-8 h-8 text-accent shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold mb-1">Track Your Health</h3>
                 <p className="text-sm text-muted-foreground">Monitor vitals and view your medical timeline.</p>

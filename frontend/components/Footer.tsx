@@ -42,14 +42,17 @@ export default function Footer() {
         {/* Logo & Info */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shadow-md">
-              <Heart className="w-5 h-5 text-white animate-pulse" />
-            </div>
+
+            <img
+              src="/logo1.png"   // 👉 put your image in public folder
+              alt="logo"
+              className="w-14 h-14 object-contain"
+            />
+
             <h2 className="font-bold text-xl text-gray-900">HealthMate</h2>
           </div>
           <p className="text-sm text-gray-500 leading-relaxed">
-            Your personal AI health assistant — upload reports, track vitals, and
-            get AI insights powered by Gemini.
+            Upload your medical reports, understand results instantly, and track your health with AI-powered insights.
           </p>
         </div>
 
@@ -119,7 +122,7 @@ export default function Footer() {
         <div>
           <h3 className="font-semibold text-lg mb-4 text-gray-900">Contact</h3>
           <p className="text-gray-500 flex items-center gap-2 mb-2">
-            <Mail className="w-4 h-4" /> support@healthmate.com
+            <Mail className="w-4 h-4" /> info@healthmate.com
           </p>
           <div className="flex gap-4 mt-3">
             <Twitter className="w-5 h-5 text-gray-500 hover:text-primary cursor-pointer transition-transform hover:scale-110" />
@@ -154,7 +157,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-200 py-4 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} HealthMate. All rights reserved.
+        © {new Date().getFullYear()} HealthMate. All rights reserved. Developed with ❤️ By Mohd Kabeer Mansoori
       </div>
     </footer>
   );

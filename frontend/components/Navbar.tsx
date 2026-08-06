@@ -78,8 +78,8 @@ export default function Navbar() {
           key={link.href}
           href={link.href}
           className={`flex items-center gap-2 px-3 py-2 rounded-md transition-all ${isActive
-              ? "bg-primary text-white font-semibold shadow"
-              : "hover:bg-accent/10"
+            ? "bg-primary text-white font-semibold shadow"
+            : "hover:bg-accent/10"
             }`}
           onClick={() => setOpen(false)}
         >
@@ -93,10 +93,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-            <Heart className="w-5 h-5 text-primary-foreground animate-pulse" />
-          </div>
-          <Link href="/" className="text-2xl font-bold text-gray-800">
+          <img
+            src="/logo1.png"   // 👉 put your image in public folder
+            alt="logo"
+            className="w-14 h-14 object-contain"
+          />
+          {/* </div> */}
+          <Link href="/" className="text-2xl font-bold text-gray-800" style={{color:'#1B609F'}}>
             HealthMate
           </Link>
         </div>

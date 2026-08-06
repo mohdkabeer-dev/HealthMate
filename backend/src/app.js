@@ -12,12 +12,21 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(cors({
-  origin: process.env.CLIENT_URL, // Use environment variable or default to localhost
-  credentials: true,// Allow cookies to be sent with requests
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 
-}))
+require('dotenv').config();
+
+const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:3000";
+
+app.use(cors({
+  origin: CLIENT_URL,
+  credentials: true,
+}));
+
+
+app.use(cors({
+  origin: "http://localhost:3000", // your frontend URL
+  credentials: true
+}));
 
 app.use('/auth', authRouter);
 app.use('/profile', profileRouter);
@@ -25,18 +34,22 @@ app.use('/report', reportRouter);
 app.use('/vitals', vitalsRouter);
 
 app.get('/', (req, res) => {
-  res.send('Backend is running 🚀')
+  res.send('Backend is running')
 })
 
 app.get('/about', (req, res) => {
-  res.send('About route 🎉')
+  res.send('About route')
+})
+app.post('/register', (req,res)=>{
+  res.send('Registred route')
 })
 
 connectDB();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });      
+
